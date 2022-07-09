@@ -34,8 +34,8 @@ describe("Node Server", () => {
 
         expect(response.status).toBe(200);
         expect(response.body).toEqual({
-            name: "David",
-            role: "Instructor",
+            name: "Danny",
+            role: "Student",
         });
     });
 });
