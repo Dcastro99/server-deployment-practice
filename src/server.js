@@ -12,7 +12,7 @@ const { pageError } = require('./handler/404');
 const { serverError } = require('./handler/500');
 
 const person = (req, res) => {
-    res.status(200).send({ name: req.query.name });
+  res.status(200).send({ name: req.query.name });
 };
 
 const app = express();
@@ -30,10 +30,10 @@ app.use(serverError);
 // ---
 
 function start(port) {
-    app.listen(port, () => console.log(`Server listening on port ${port}`));
+  app.listen(port, () => console.log(`Server listening on port ${port}`));
 }
 
 module.exports = {
-    app,
-    start,
+  app,
+  start,
 };
