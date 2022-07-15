@@ -9,12 +9,12 @@
 // test setup
 
 const supertest = require("supertest");
-const server = require("../server.js");
+const server = require("../src/server.js");
 
 const request = supertest(server.app);
 
-describe("Node Server", () => {
-    it("says hello world", async () => {
+describe('Node Server', () => {
+    it('says hello world', async () => {
         // set up the test so it can do a thing
         // Prepare the server
         // (see above)
