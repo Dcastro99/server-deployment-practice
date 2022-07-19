@@ -1,12 +1,4 @@
-// Assertion - check to see if something is what we expect
 
-// expect(true).toBe(true); // SGTM
-// expect(3).toBe(5); // ?? sus
-
-// test organization - describe, it
-//   describe groups tests
-//   it is a single test case
-// test setup
 
 const supertest = require('supertest');
 const { db } = require('../src/db');
@@ -40,7 +32,7 @@ describe('Node Server', () => {
     });
   });
 
-  describe('Users', () => {
+  describe('Musician', () => {
     beforeEach(async () => {
       await db.sync();
     });
@@ -52,7 +44,7 @@ describe('Node Server', () => {
 
   });
 
-  describe('Users', () => {
+  describe('Golfer', () => {
     beforeEach(async () => {
       await db.sync();
     });
