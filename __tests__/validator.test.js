@@ -2,31 +2,27 @@ const { validator } = require('../src/middleware/validator');
 
 describe('validator', () => {
 
-    // it('logs a request', () => {
-    //     jest.spyOn(console, 'log').mockImplementation();
 
-    //     // Phase 1: set up
-    //     const valReq = { method: 'GET', url: '/person?name=danny', query: { color: 'yellow' } };
-    //     const res = {};
-    //     const next = () => { };
+  // Test that validator calls `next()` to pass control to the next middleware
+  it('calls next()', () => {
+    const req = { method: 'GET', url: '/', params: { name: 'danny' } };
+    const res = {};
+    const next = jest.fn();
 
-    //     //Action
-    //     validator(valReq, res, next);
+    //Action
+    validator(req, res, next);
 
-    //     // Phase 3: assertions
-    //     expect(console.log).toHaveBeenCalledWith('GET', '/person?name=danny', { name: 'danny' });
-    // });
+    // Assertion
+    expect(next).toHaveBeenCalled();
+  });
+  it('fails without a name param', () => {
+    const req = { method: 'GET', url: '/', params: {} };
+    const res = {};
+    const next = jest.fn();
 
-    // Test that validator calls `next()` to pass control to the next middleware
-    it('calls next()', () => {
-        const req = { method: 'GET', url: '/person?name=danny', query: { name: 'danny' } };
-        const res = {};
-        const next = jest.fn();
-
-        //Action
-        validator(req, res, next);
-
-        // Assertion
-        expect(next).toHaveBeenCalled();
-    });
+    expect(() => {
+      validator(req, res, next);
+    }).toThrow();
+  });
 });
+
