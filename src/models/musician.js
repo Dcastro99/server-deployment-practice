@@ -1,9 +1,9 @@
-const { DataTypes } = require('sequelize');
+const sequelize = require('sequelize');
 
 function musician(db) {
   return db.define('Musician', {
-    musicianType: DataTypes.STRING,
-    instrument: DataTypes.STRING,
+    musicianType: sequelize.DataTypes.STRING,
+    instrument: sequelize.DataTypes.STRING,
   });
 
 }
