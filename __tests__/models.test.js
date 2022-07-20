@@ -54,10 +54,6 @@ describe('models', () => {
   });
 
 
-  it('can update a musician', async () => {
-    const updateRes = await request.put(`/musician/${musicianType}`);
-    expect(updateRes.status).toBe(200);
-  });
   it('can delete a musician', async () => {
     const deleteRes = await request.delete(`/musician/${musicianType}`);
     expect(deleteRes.status).toBe(200);
@@ -65,6 +61,21 @@ describe('models', () => {
 
 
 
+  // CREATES MUSICIAN
+  it('creates a golfer', async () => {
+    let response = await request.post('/golfer').send({
+      golferName: 'Test golfer',
+      golferCountry: 'string',
+      worldRanking: '9',
+    });
+
+    expect(response.status).toBe(200);
+    expect(response.body).toMatchObject({
+      golferName: 'Test golfer',
+      golferCountry: 'string',
+      worldRanking: '9',
+    });
+  });
 
   let golferName;
   it('can list a golfer', async () => {
