@@ -53,7 +53,7 @@ describe('models', () => {
     expect(listMusicianRes.body[0]).toHaveProperty('musicianType');
   });
 
-
+  //IT DELETES MUSICIAN
   it('can delete a musician', async () => {
     const deleteRes = await request.delete(`/musician/${musicianType}`);
     expect(deleteRes.status).toBe(200);
@@ -61,7 +61,7 @@ describe('models', () => {
 
 
 
-  // CREATES MUSICIAN
+  // CREATES GOLFER
   it('creates a golfer', async () => {
     let response = await request.post('/golfer').send({
       golferName: 'Test golfer',
@@ -77,6 +77,29 @@ describe('models', () => {
     });
   });
 
+  //UPDATES GOLFER
+  it('retrieves a golfer', async () => {
+    let createResponse = await request.post('/golfer').send({
+      golferName: 'Test golfer',
+      golferCountry: 'string',
+      worldRanking: '9',
+    });
+
+    expect(createResponse.status).toBe(200);
+    const createdId = createResponse.body.id;
+
+    let retrieveResponse = await request.get(`/golfer/${createdId}`);
+
+    expect(retrieveResponse.status).toBe(200);
+    expect(retrieveResponse.body).toMatchObject({
+      id: createdId,
+      golferName: 'Test golfer',
+      golferCountry: 'string',
+      worldRanking: Number(9),
+    });
+  });
+
+  //IT LISTS GOLFER
   let golferName;
   it('can list a golfer', async () => {
     let listGolferRes = await request.get('/golfer');
@@ -84,12 +107,7 @@ describe('models', () => {
     expect(listGolferRes.body[0]).toHaveProperty('golferName');
   });
 
-
-
-  it('can update a golfer', async () => {
-    const upRes = await request.put(`/golfer/${golferName}`);
-    expect(upRes.status).toBe(200);
-  });
+  // DELETES GOLFER
   it('can delete a golfer', async () => {
     const delRes = await request.delete(`/golfer/${golferName}`);
     expect(delRes.status).toBe(200);
