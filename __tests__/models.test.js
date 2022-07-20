@@ -52,7 +52,7 @@ describe('models', () => {
     expect(listMusicianRes.status).toBe(200);
     expect(listMusicianRes.body[0]).toHaveProperty('musicianType');
   });
-  //not sure why github wont pass "list" test
+
 
   it('can update a musician', async () => {
     const updateRes = await request.put(`/musician/${musicianType}`);
@@ -72,6 +72,9 @@ describe('models', () => {
     expect(listGolferRes.status).toBe(200);
     expect(listGolferRes.body[0]).toHaveProperty('golferName');
   });
+
+
+
   it('can update a golfer', async () => {
     const upRes = await request.put(`/golfer/${golferName}`);
     expect(upRes.status).toBe(200);
