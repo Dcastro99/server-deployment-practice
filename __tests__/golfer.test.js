@@ -9,24 +9,24 @@ describe('Golfer route', () => {
     await db.sync();
   });
 
-  it('can ctreate a golfer', async () => {
-    const req = {
-      body: { golferName: 'golfer test', golferCountry: 'string', worldRanking: 0 },
-    };
-    const res = {
-      status: jest.fn().mockReturnThis(),
-      send: jest.fn(),
-    };
+  // it('can ctreate a golfer', async () => {
+  //   const req = {
+  //     body: { golferName: 'golfer test', golferCountry: 'string', worldRanking: 0 },
+  //   };
+  //   const res = {
+  //     status: jest.fn().mockReturnThis(),
+  //     send: jest.fn(),
+  //   };
 
-    const created = await createGolfer(req, res);
+  //   const created = await createGolfer(req, res);
 
-    const golfer = res.send.mock.calls[0][0];
-    expect(golfer).toMatchObject({
-      golferName: 'golfer test',
-      golferCountry: 'string',
-      worldRanking: 0,
-    });
-  });
+  //   const golfer = res.send.mock.calls[0][0];
+  //   expect(golfer).toMatchObject({
+  //     golferName: 'golfer test',
+  //     golferCountry: 'string',
+  //     worldRanking: 0,
+  //   });
+  // });
 
   it('can query a golfer', async () => {
     const createReq = {
