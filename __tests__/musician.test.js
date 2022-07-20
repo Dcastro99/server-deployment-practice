@@ -1,11 +1,11 @@
 
 
-const { db } = require('../src/db');
-const { createMusician, getMusician } = require('../src/routes/musician');
+const { db, Musician } = require('../src/db');
+const { createMusician, getMusician, updateMusician } = require('../src/routes/musician');
 
 
 
-describe('Musician route', () => {
+describe('Musician CRUD', () => {
   beforeEach(async () => {
     await db.sync();
   });

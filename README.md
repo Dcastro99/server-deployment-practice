@@ -36,7 +36,7 @@ Returns `{name:bob}`
 
 [Lab 3 - actions](https://github.com/Dcastro99/server-deployment-practice/actions)
 
-[lab 2 dev pull request](https://github.com/Dcastro99/server-deployment-practice/pull/10)
+[lab 2 dev pull request](https://github.com/Dcastro99/server-deployment-practice/pull/11)
 
 > ### Setup
 
