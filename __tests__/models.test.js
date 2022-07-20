@@ -21,12 +21,12 @@ describe('models', () => {
       expect(listMusicianRes.body[0]).toHaveProperty('musicianType');
     });
     it('can update a musician', async () => {
-      const response = await request.put(`/musician/${musicianType}`);
-      expect(response.status).toBe(200);
+      const updateRes = await request.put(`/musician/${musicianType}`);
+      expect(updateRes.status).toBe(200);
     });
     it('can delete a musician', async () => {
-      const response = await request.delete(`/musician/${musicianType}`);
-      expect(response.status).toBe(200);
+      const deleteRes = await request.delete(`/musician/${musicianType}`);
+      expect(deleteRes.status).toBe(200);
     });
 
   });
@@ -42,12 +42,12 @@ describe('models', () => {
       expect(listGolferRes.body[0]).toHaveProperty('golferName');
     });
     it('can update a golfer', async () => {
-      const response = await request.put(`/golfer/${golferName}`);
-      expect(response.status).toBe(200);
+      const upRes = await request.put(`/golfer/${golferName}`);
+      expect(upRes.status).toBe(200);
     });
     it('can delete a golfer', async () => {
-      const response = await request.delete(`/golfer/${golferName}`);
-      expect(response.status).toBe(200);
+      const delRes = await request.delete(`/golfer/${golferName}`);
+      expect(delRes.status).toBe(200);
     });
 
 
