@@ -25,7 +25,7 @@ describe('models', () => {
     });
   });
 
-  //UPDATES MUSICIAN
+  //GRABS A MUSICIAN
   it('retrieves a musician', async () => {
     let createResponse = await request.post('/musician').send({
       musicianType: 'Test musician',
@@ -59,6 +59,12 @@ describe('models', () => {
     expect(deleteRes.status).toBe(200);
   });
 
+  //IT UPDATES MUSICIAN
+  it('can update a musician', async () => {
+    const updateRes = await request.put(`/musician/${musicianType}`);
+    expect(updateRes.status).toBe(200);
+  });
+
 
 
   // CREATES GOLFER
@@ -77,7 +83,7 @@ describe('models', () => {
     });
   });
 
-  //UPDATES GOLFER
+  //GRABS A GOLFER
   it('retrieves a golfer', async () => {
     let createResponse = await request.post('/golfer').send({
       golferName: 'Test golfer',
@@ -113,6 +119,11 @@ describe('models', () => {
     expect(delRes.status).toBe(200);
   });
 
+  //IT UPDATES GOLFER
+  it('can update a golfer', async () => {
+    const updateRes = await request.put(`/golfer/${musicianType}`);
+    expect(updateRes.status).toBe(200);
+  });
 
 
 });
