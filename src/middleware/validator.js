@@ -1,11 +1,11 @@
 const validator = (req, res, next) => {
-    if (req.method, req.url, req.query) {
-        next();
-    } else {
-        throw new Error("Attention!: name not found.");
-    }
+  if (req.params['name']) {
+    next();
+  } else {
+    throw new Error('Attention!: name not found.');
+  }
 };
 
 module.exports = {
-    validator,
+  validator,
 };
