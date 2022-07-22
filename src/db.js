@@ -8,9 +8,10 @@ switch (process.env.NODE_ENV) {
     connection_string = process.env.DATABASE_URL;
     break;
   case 'dev':
+  case 'staging':
     connection_string = 'sqlite::memory:';
     break;
-  case 'staging':
+
   default:
     connection_string = `sqlite:${process.env.SQLITE_FILE ?? '../db'}`;
     break;
