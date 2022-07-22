@@ -54,14 +54,32 @@ describe('models', () => {
   });
 
   //IT DELETES MUSICIAN
-  it('can delete a musician', async () => {
-    const deleteRes = await request.delete(`/musician/${musicianType}`);
-    expect(deleteRes.status).toBe(200);
+  it('deletes a musician', async () => {
+    let createResponse = await request.post('/musician').send({
+      musicianType: 'Test musician',
+      golferCountry: 'string',
+
+    });
+
+    expect(createResponse.status).toBe(200);
+    const createdId = createResponse.body.id;
+
+    let retrieveResponse = await request.delete(`/musician/${createdId}`);
+    expect(retrieveResponse.status).toBe(200);
   });
 
   //IT UPDATES MUSICIAN
   it('can update a musician', async () => {
-    const updateRes = await request.put(`/musician/${musicianType}`);
+    let createResponse = await request.post('/musician').send({
+      musicianType: 'Test musician',
+      instrument: 'string',
+
+    });
+
+    expect(createResponse.status).toBe(200);
+    const createdId = createResponse.body.id;
+
+    const updateRes = await request.put(`/musician/${createdId}`);
     expect(updateRes.status).toBe(200);
   });
 
@@ -113,17 +131,35 @@ describe('models', () => {
     expect(listGolferRes.body[0]).toHaveProperty('golferName');
   });
 
-  // DELETES GOLFER
-  it('can delete a golfer', async () => {
-    const delRes = await request.delete(`/golfer/${golferName}`);
-    expect(delRes.status).toBe(200);
-  });
+
 
   //IT UPDATES GOLFER
   it('can update a golfer', async () => {
-    const updateRes = await request.put(`/golfer/${musicianType}`);
+    let createResponse = await request.post('/golfer').send({
+      golferName: 'Test golfer',
+      golferCountry: 'string',
+      worldRanking: '9',
+    });
+
+    expect(createResponse.status).toBe(200);
+    const createdId = createResponse.body.id;
+
+    const updateRes = await request.put(`/golfer/${createdId}`);
     expect(updateRes.status).toBe(200);
   });
 
+  it('deletes a golfer', async () => {
+    let createResponse = await request.post('/golfer').send({
+      golferName: 'Test golfer',
+      golferCountry: 'string',
+      worldRanking: '9',
+    });
+
+    expect(createResponse.status).toBe(200);
+    const createdId = createResponse.body.id;
+
+    let retrieveResponse = await request.delete(`/golfer/${createdId}`);
+    expect(retrieveResponse.status).toBe(200);
+  });
 
 });
