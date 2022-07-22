@@ -2,6 +2,7 @@ const supertest = require('supertest');
 const { db } = require('../src/db');
 const server = require('../src/server.js');
 
+
 const request = supertest(server.app);
 
 // clears our database
@@ -11,7 +12,10 @@ describe('models', () => {
     await db.sync();
   });
 
-  // CREATES MUSICIAN
+
+
+
+  // CREATES MUSICIAN//////////////////
   it('creates a miusician', async () => {
     let response = await request.post('/musician').send({
       musicianType: 'Test musician',
@@ -37,7 +41,7 @@ describe('models', () => {
     const createdId = createResponse.body.id;
 
     let retrieveResponse = await request.get(`/musician/${createdId}`);
-
+    console.log(retrieveResponse.body);
     expect(retrieveResponse.status).toBe(200);
     expect(retrieveResponse.body).toMatchObject({
       id: createdId,
@@ -54,6 +58,22 @@ describe('models', () => {
     expect(listMusicianRes.body[0]).toHaveProperty('musicianType');
   });
 
+  //IT UPDATES MUSICIAN
+  it('can update a musician', async () => {
+    let createResponse = await request.post('/musician').send({
+      musicianType: 'Test musician',
+      instrument: 'string',
+
+    });
+
+    expect(createResponse.status).toBe(200);
+    const createdId = createResponse.body.id;
+
+    const updateRes = await request.put(`/musician/${createdId}`).send({ musicianType: 'bob' });
+    expect(updateRes.status).toBe(200);
+  });
+
+
   //IT DELETES MUSICIAN
   it('deletes a musician', async () => {
     let createResponse = await request.post('/musician').send({
@@ -69,24 +89,10 @@ describe('models', () => {
     expect(retrieveResponse.status).toBe(200);
   });
 
-  //IT UPDATES MUSICIAN
-  it.skip('can update a musician', async () => {
-    let createResponse = await request.post('/musician').send({
-      musicianType: 'Test musician',
-      instrument: 'string',
-
-    });
-
-    expect(createResponse.status).toBe(200);
-    const createdId = createResponse.body.id;
-
-    const updateRes = await request.put(`/musician/${createdId}`).send({ musicianType: 'bob' });
-    expect(updateRes.status).toBe(200);
-  });
 
 
 
-  // CREATES GOLFER
+  // CREATES GOLFER/////////////////////////
   it('creates a golfer', async () => {
     let response = await request.post('/golfer').send({
       golferName: 'Test golfer',
@@ -126,7 +132,7 @@ describe('models', () => {
 
   //IT LISTS GOLFER
 
-  it('can list a golfer', async () => {
+  it.skip('can list a golfer', async () => {
     let listGolferRes = await request.get('/golfer');
     expect(listGolferRes.status).toBe(200);
     expect(listGolferRes.body[0]).toHaveProperty('golferName');
@@ -135,7 +141,7 @@ describe('models', () => {
 
 
   //IT UPDATES GOLFER
-  it.skip('can update a golfer', async () => {
+  it('can update a golfer', async () => {
     let createResponse = await request.post('/golfer').send({
       golferName: 'Test golfer',
       golferCountry: 'string',
@@ -160,7 +166,9 @@ describe('models', () => {
     const createdId = createResponse.body.id;
 
     let retrieveResponse = await request.delete(`/golfer/${createdId}`);
+    console.log(retrieveResponse.body);
     expect(retrieveResponse.status).toBe(200);
   });
+
 
 });
