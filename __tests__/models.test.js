@@ -79,7 +79,7 @@ describe('models', () => {
     expect(createResponse.status).toBe(200);
     const createdId = createResponse.body.id;
 
-    const updateRes = await request.put(`/musician/${createdId}`);
+    const updateRes = await request.put(`/musician/${createdId}`).send({ musicianType: 'bob' });
     expect(updateRes.status).toBe(200);
   });
 
@@ -144,7 +144,7 @@ describe('models', () => {
     expect(createResponse.status).toBe(200);
     const createdId = createResponse.body.id;
 
-    const updateRes = await request.put(`/golfer/${createdId}`);
+    const updateRes = await request.put(`/golfer/${createdId}`).send({ golferName: 'Mike' });
     expect(updateRes.status).toBe(200);
   });
 
