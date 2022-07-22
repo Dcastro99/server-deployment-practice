@@ -46,7 +46,7 @@ describe('models', () => {
   });
 
   //IT LISTS MUSICIAN
-  let musicianType;
+
   it('can list a musician', async () => {
     let listMusicianRes = await request.get('/musician');
     expect(listMusicianRes.status).toBe(200);
@@ -124,7 +124,7 @@ describe('models', () => {
   });
 
   //IT LISTS GOLFER
-  let golferName;
+
   it('can list a golfer', async () => {
     let listGolferRes = await request.get('/golfer');
     expect(listGolferRes.status).toBe(200);
