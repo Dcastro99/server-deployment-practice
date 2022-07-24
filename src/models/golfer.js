@@ -2,9 +2,18 @@ const sequelize = require('sequelize');
 
 function golfer(db) {
   return db.define('Golfer', {
-    golferName: sequelize.DataTypes.STRING,
+    golferName: {
+      type: sequelize.DataTypes.STRING,
+      allowNull: false,
+      unique: false,
+    },
     golferCountry: sequelize.DataTypes.STRING,
-    worldRanking: sequelize.DataTypes.INTEGER,
+    worldRanking: {
+      type: sequelize.DataTypes.INTEGER,
+      validate: {
+        isDecimal: true,
+      },
+    },
   });
 }
 

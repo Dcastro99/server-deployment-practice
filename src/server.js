@@ -54,6 +54,7 @@ async function start(port) {
   if (shouldSyncOnStart /* todo define this somewhere */) {
 
     await db.sync();
+    console.log('CONNECTED TO DB:');
   }
   app.listen(port, () => console.log(`Server listening on port ${port}`));
 }

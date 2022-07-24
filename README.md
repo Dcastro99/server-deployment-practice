@@ -36,33 +36,29 @@ Returns `{name:bob}`
 
 [Lab 3 - actions](https://github.com/Dcastro99/server-deployment-practice/actions)
 
-[lab 2 dev pull request](https://github.com/Dcastro99/server-deployment-practice/pull/11)
+[lab 3 dev pull request](https://github.com/Dcastro99/server-deployment-practice/pull/11)
 
-> ### Setup
-
-`.env` PORT
-
-`PORT` - 3001
-
-> ### Running the app
-
-`npm start`
-
-Endpoint: `/person`
-
-Returns `{name:bob}`
 
 > Models
-```
+
 - Golfer: `/golfer`
 
 - Golfer Params: { musicianType: `'string'`, instrument: `'string'`}
-```
-```
+
+
 - musician: `/musician`
 
 - Musician Params: {golferName: `'string'`, golferCounrty: `'string'`, worldRank: `'NUMBER'`}
-```
+
+## Branch: Lab4
+
+[Lab 4 - actions](https://github.com/Dcastro99/server-deployment-practice/actions)
+
+[lab 4 dev pull request](https://github.com/Dcastro99/server-deployment-practice/pull/29)
+
+
+> class Collection
+- refactoring our testing
 > RUN:
 ```javascript
 {

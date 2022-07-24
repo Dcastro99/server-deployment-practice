@@ -5,9 +5,12 @@ const createMusician = async (req, res) => {
 
   const musician = Musician.build({ musicianType, instrument });
 
-  await musician.save();
+  try {
+    await musician.save();
+  } catch (error) { console.log('THIS IS THE ERROR:', error); return res.status(500); }
 
   res.status(200).send(musician);
+
 };
 
 const listMusician = async (req, res) => {
