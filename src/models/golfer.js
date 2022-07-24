@@ -5,7 +5,7 @@ function golfer(db) {
     golferName: {
       type: sequelize.DataTypes.STRING,
       allowNull: false,
-      unique: true,
+      unique: false,
     },
     golferCountry: sequelize.DataTypes.STRING,
     worldRanking: {
