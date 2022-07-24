@@ -11,20 +11,24 @@ describe('models', () => {
   beforeEach(async () => {
     await db.sync();
   });
+  afterAll(async () => {
+    await db.drop();
+  });
 
 
 
 
   // CREATES MUSICIAN//////////////////
-  it('creates a miusician', async () => {
+  it('creates a musician', async () => {
+
     let response = await request.post('/musician').send({
-      musicianType: 'Test musician',
+      musicianType: 'Test Musician',
       instrument: 'string',
     });
 
     expect(response.status).toBe(200);
     expect(response.body).toMatchObject({
-      musicianType: 'Test musician',
+      musicianType: 'Test Musician',
       instrument: 'string',
     });
 
@@ -132,7 +136,7 @@ describe('models', () => {
 
   //IT LISTS GOLFER
 
-  it.skip('can list a golfer', async () => {
+  it('can list a golfer', async () => {
     let listGolferRes = await request.get('/golfer');
     expect(listGolferRes.status).toBe(200);
     expect(listGolferRes.body[0]).toHaveProperty('golferName');

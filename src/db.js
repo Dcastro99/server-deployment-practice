@@ -10,6 +10,7 @@ switch (process.env.NODE_ENV) {
   case 'dev':
   case 'staging':
     connection_string = 'sqlite::memory:';
+
     break;
 
   default:
